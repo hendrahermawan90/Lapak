@@ -1,0 +1,151 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- CSS In-line -->
+<style>
+    /* Memastikan gambar dalam kartu tetap sepenuhnya terlihat dan tidak terpotong */
+    .card-img-top {
+        object-fit: contain; /* Menjaga gambar agar sepenuhnya terlihat tanpa terpotong */
+        height: 200px; /* Menetapkan tinggi gambar agar tidak terlalu kecil */
+        width: 100%; /* Lebar gambar mengikuti kontainer */
+        background-color: #f8f9fa; /* Menambahkan latar belakang agar tampak rapi jika gambar lebih kecil dari kontainer */
+        transition: transform 0.3s ease; /* Transisi saat hover untuk gambar */
+    }
+
+    .card-img-top:hover {
+        transform: scale(1.05); /* Efek memperbesar gambar saat hover */
+    }
+
+    /* Styling tambahan untuk bagian produk */
+    #produk {
+        padding-top: 70px;
+        padding-bottom: 70px;
+        background-color: #f9f9f9; /* Background lebih lembut */
+    }
+
+    /* Membuat ukuran kartu konsisten */
+    .card {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between; /* Menjaga agar konten dalam kartu tersebar */
+        height: 100%; /* Memastikan kartu mengisi seluruh ruang */
+        border-radius: 10px; /* Menambahkan border-radius untuk tampilan lebih modern */
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Efek bayangan halus */
+        transition: box-shadow 0.3s ease; /* Transisi saat hover */
+    }
+
+    .card:hover {
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Bayangan lebih besar saat hover */
+    }
+
+    .card-body {
+        text-align: center;
+        padding: 1rem; /* Menambahkan padding di dalam card body */
+        flex-grow: 1; /* Memastikan card body mengambil ruang yang tersedia */
+        display: flex;
+        flex-direction: column; /* Menyusun konten secara vertikal */
+        justify-content: flex-end; /* Memastikan elemen harga dan tombol beli berada di bawah */
+    }
+
+    .card-title {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 10px; /* Memberikan ruang antara judul dan deskripsi */
+        text-transform: capitalize; /* Judul menjadi lebih rapi */
+    }
+
+    .card-text {
+        font-size: 1rem;
+        color: #666;
+        margin-bottom: 10px; /* Memberikan sedikit ruang bawah antara harga dan tombol beli */
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+        padding: 0.6rem 1.5rem;
+        font-size: 1rem;
+        border-radius: 25px;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #0056b3;
+    }
+
+    /* Menjaga kartu memiliki tinggi yang sama */
+    .col-md-3 {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 30px;
+    }
+
+    /* Menambahkan margin bawah pada setiap card */
+    .card {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Styling untuk harga dengan simbol dolar */
+    .price {
+        font-size: 1.25rem;
+        font-weight: bold;
+        color: #d41d1d; /* Warna merah untuk harga */
+        margin-bottom: 15px;
+    }
+
+    .currency-symbol {
+        font-size: 1.25rem;
+        font-weight: bold;
+        color: #0b9416; /* Warna hijau untuk simbol dolar */
+        margin-right: 5px; /* Memberikan sedikit jarak antara simbol dolar dan harga */
+    }
+
+    /* Responsif untuk perangkat kecil */
+    @media (max-width: 768px) {
+        .col-md-3 {
+            width: 50%; /* Menampilkan 2 produk per baris pada layar kecil */
+        }
+    }
+
+    @media (max-width: 576px) {
+        .col-md-3 {
+            width: 100%; /* Menampilkan 1 produk per baris pada layar sangat kecil */
+        }
+
+        .card-img-top {
+            height: 180px; /* Menurunkan ukuran gambar di layar kecil */
+        }
+    }
+</style>
+
+<!-- Produk -->
+<section id="produk" class="py-5 bg-light">
+    <div class="container">
+        
+        <div class="row">
+            {% for product in products %}
+            <div class="col-md-3 mb-4">
+                <a href="/product/{{ product.id }}">
+                    <div class="card shadow-sm border-0">
+                        <img src="{{ product.image }}" class="card-img-top img-fluid" alt="{{ product.title }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ product.title }}</h5>
+                            <!-- Menambahkan simbol dolar di depan harga -->
+                            <p class="card-text price"><span class="currency-symbol">$</span>{{ product.price }}</p>
+                            <a href="#" class="btn btn-primary">Beli</a>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,164 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<style>
+    /* Styling untuk kategori */
+    .kategori-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Shadow lebih halus pada default */
+    }
+
+    .kategori-card:hover {
+        transform: scale(1.05); /* Membesarkan kartu sedikit saat hover */
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2); /* Efek bayangan lebih besar saat hover */
+    }
+
+    /* Menambahkan sedikit padding untuk judul */
+    .text-primary {
+        font-size: 2rem;
+        font-weight: bold;
+    }
+
+    /* Membuat text di dalam kartu lebih menarik */
+    .card-body {
+        padding: 1.5rem;
+        transition: background-color 0.3s ease; /* Transisi halus saat hover */
+    }
+
+    .card-body:hover {
+        background-color: #f8f9fa; /* Ganti latar belakang saat hover */
+    }
+
+    .card-title {
+        font-size: 1.3rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: #333;
+    }
+
+    .card-text {
+        font-size: 1rem;
+        color: #666;
+        line-height: 1.5;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+        padding: 0.6rem 1.5rem;
+        font-size: 1rem;
+        border-radius: 25px;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #0056b3;
+    }
+
+    /* Mengatur margin bawah dan padding untuk keseluruhan bagian kategori */
+    #kategori {
+        padding-top: 70px;
+        padding-bottom: 70px;
+        background-color: #f0f4f7; /* Warna latar belakang lebih lembut */
+    }
+
+    /* Menambahkan efek untuk teks header */
+    h2.text-center {
+        margin-bottom: 30px;
+    }
+
+    /* Menetapkan ukuran gambar yang konsisten */
+    .kategori-card img {
+        width: 100%; /* Gambar akan mengisi lebar container */
+        height: 250px; /* Atur tinggi gambar agar serasi */
+        object-fit: cover; /* Pastikan gambar tetap proporsional */
+        transition: transform 0.3s ease; /* Transisi gambar saat hover */
+    }
+
+    .kategori-card img:hover {
+        transform: scale(1.05); /* Gambar sedikit membesar saat hover */
+    }
+
+    /* Efek hover tetap ada untuk kartu */
+    .kategori-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    /* Styling untuk kategori dan teks */
+    .text-primary {
+        font-size: 2rem;
+        font-weight: bold;
+    }
+
+    .card-body {
+        padding: 1.5rem;
+    }
+
+    .card-title {
+        font-size: 1.25rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: #333;
+    }
+
+    .card-text {
+        font-size: 1rem;
+        color: #666;
+    }
+
+    #kategori {
+        padding-top: 50px;
+        padding-bottom: 50px;
+        background-color: #f8f9fa;
+    }
+
+    h2.text-center {
+        margin-bottom: 30px;
+    }
+
+</style>
+
+<!-- Kategori -->
+<section id="kategori" class="py-5 bg-light">
+    <div class="container">
+        
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm border-0 kategori-card">
+                    <img src="{{ url_for('static', filename='img/pria.jpg') }}" class="card-img-top" alt="Kategori 1">
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-uppercase">Fashion Pria</h5>
+                        <p class="card-text">Temukan koleksi fashion pria terbaru untuk tampil gaya.</p>
+                        <a href="#" class="btn btn-primary">Lihat Produk</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm border-0 kategori-card">
+                    <img src="{{ url_for('static', filename='img/wanita.jpeg') }}" class="card-img-top" alt="Kategori 2">
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-uppercase">Fashion Wanita</h5>
+                        <p class="card-text">Pilih dari koleksi fashion wanita yang elegan dan modis.</p>
+                        <a href="#" class="btn btn-primary">Lihat Produk</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm border-0 kategori-card">
+                    <img src="{{ url_for('static', filename='img/accesories.jpg') }}" class="card-img-top" alt="Kategori 3">
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-uppercase">Sepatu & Aksesoris</h5>
+                        <p class="card-text">Temukan sepatu dan aksesoris terbaik untuk melengkapi gaya kamu.</p>
+                        <a href="#" class="btn btn-primary">Lihat Produk</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
